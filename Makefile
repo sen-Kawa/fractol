@@ -6,7 +6,7 @@
 #    By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 18:56:29 by kaheinz           #+#    #+#              #
-#    Updated: 2022/07/06 23:41:03 by kaheinz          ###   ########.fr        #
+#    Updated: 2022/07/07 00:10:54 by kaheinz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ CFLAGS = -Werror -Wextra -Wall -g
 
 $(NAME): $(OBJS)
 	make -C libft/
+	make -C mlx/
 	make bonus -C libft/
 	$(CC) $(CFLAGS) mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME) $(OBJS) $(LIBFT)
 
@@ -34,10 +35,12 @@ all: $(NAME)
 clean:
 	rm -f $(OBJS)
 	make clean -C libft/
+	make clean -C mlx/
 
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C libft/
+	make fclean -C mlx/
 
 re: fclean all
 
