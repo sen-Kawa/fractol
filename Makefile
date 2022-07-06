@@ -6,7 +6,7 @@
 #    By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 18:56:29 by kaheinz           #+#    #+#              #
-#    Updated: 2022/07/07 00:10:54 by kaheinz          ###   ########.fr        #
+#    Updated: 2022/07/07 00:13:23 by kaheinz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C libft/
-	make fclean -C mlx/
 
 re: fclean all
 
