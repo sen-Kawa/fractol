@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/07 18:11:36 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:14:11 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ typedef struct s_rect
 void    circle(t_data *data);
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    square(t_data *data, int line_x, int line_y);
+int		arg_handling(int argc, char **argv);
 
 #endif

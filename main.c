@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/07 18:07:27 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:16:18 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,20 @@ void	circle(t_data *data)
 		center_x++;
 		radius++;
 	}
+}
 
+int	arg_handling(int argc, char **argv)
+{
+	if (argc == 1)
+	{
+		ft_printf("Please add as parameter the set you would like to display: Julia or Mandelbrot.\n");
+		exit (EXIT_FAILURE);
+	}
+	if (argc == 2)
+	{
+		ft_printf("%s", argv[1]);
+	}
+	return (0);
 }
 
 int main(int argc, char **argv)
@@ -78,15 +91,7 @@ int main(int argc, char **argv)
 	void	*mlx_win;
     t_data	img;
 	
-	if (argc == 1)
-	{
-		ft_printf("Please add as parameter the set you would like to display: Julia or Mandelbrot.\n");
-		return (0);
-	}
-	if (argc == 2)
-	{
-		ft_printf("%s", argv[1]);
-	}
+	arg_handling(argc, argv);
     mlx = mlx_init();
     mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Fractol!");
     img.img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
