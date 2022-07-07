@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/07 22:40:04 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/07 23:04:21 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,16 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	square(t_data *data, int line_x, int line_y)
 {
-	while (line_x < 100)
+	while (line_y <= 100)
 	{
-		if (line_x == 10 || line_x == 99)
-		{
-			while (line_y < 99)
+			while (line_x <= 100)
 			{
-				my_mlx_pixel_put(data, line_x, line_y, 0x0000FFFF);
-				line_y++;
+				if ((line_y == 10 || line_y == 100) || (line_x == 10 || line_x == 100))
+					my_mlx_pixel_put(data, line_x, line_y, 0x0000FFFF);
+				line_x++;
 			}
-		}
-		my_mlx_pixel_put(data, line_x, line_y, 0x0000FFFF);
-		line_x++;
-	}	
-	while (line_x > 10)
-	{
-		if (line_y == 10 || line_y == 99)
-		{
-			while (line_y > 10)
-			{
-				my_mlx_pixel_put(data, line_x, line_y, 0x0000FFFF);
-				line_y--;
-			}
-		}
-		my_mlx_pixel_put(data, line_x, line_y, 0x0000FFFF);
-		line_x--;
+			line_x = 10;
+			line_y++;
 	}
 }
 
