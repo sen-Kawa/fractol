@@ -6,26 +6,11 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/07 14:37:44 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:07:27 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include "mlx/mlx.h"
-
-typedef struct s_data
-{
-    void    *img;
-    char    *addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-}   t_data;
-
-void	circle(t_data *data);
-void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	square(t_data *data, int line_x, int line_y);
+#include "fractol.h"
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -67,24 +52,47 @@ void	square(t_data *data, int line_x, int line_y)
 
 void	circle(t_data *data)
 {
-	my_mlx_pixel_put(data, 500, 500, 0x00FF0000);
+	int		center_x;
+	int		center_y;
+	int		radius_len;
+	int		radius;
+
+	center_x = 500;
+	center_y = 500;
+	radius_len = 50;
+	radius = 0;
+
+	my_mlx_pixel_put(data, center_x, center_y, 0x00FF0000);
+	while (radius <= radius_len)
+	{
+		my_mlx_pixel_put(data, center_x, center_y, 0x00FF0000);
+		center_x++;
+		radius++;
+	}
+
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	void	*mlx;
 	void	*mlx_win;
     t_data	img;
-	int		line_x;
-	int		line_y;
-
-	line_x = 10;
-	line_y = 10;
+	
+	if (argc == 1)
+	{
+		ft_printf("Please add as parameter the set you would like to display: Julia or Mandelbrot.\n");
+		return (0);
+	}
+	if (argc == 2)
+	{
+		ft_printf("%s", argv[1]);
+	}
     mlx = mlx_init();
-    mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-    img.img = mlx_new_image(mlx, 1920, 1080);
+    mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Fractol!");
+    img.img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
     img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	square(&img, line_x, line_y);
+//	mlx_loop_hook(img.mlx_ptr, &render, &data)
+	square(&img, 10, 10);
 	circle(&img);
     mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
     mlx_loop(mlx);
