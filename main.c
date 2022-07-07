@@ -6,18 +6,18 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/07 18:16:18 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/07 22:06:07 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void    my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-    char    *dst;
+	char	*dst;
 
-    dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-    *(unsigned int*)dst = color;
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
 
 void	square(t_data *data, int line_x, int line_y)
@@ -87,20 +87,18 @@ int	arg_handling(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
-    t_data	img;
+	t_data	img;
 	
 	arg_handling(argc, argv);
-    mlx = mlx_init();
-    mlx_win = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Fractol!");
-    img.img = mlx_new_image(mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-//	mlx_loop_hook(img.mlx_ptr, &render, &data)
+	img.mlx = mlx_init();
+	img.mlx_win = mlx_new_window(img.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FractOl!");
+	img.img = mlx_new_image(img.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	square(&img, 10, 10);
 	circle(&img);
-    mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-    mlx_loop(mlx);
-    return (0);
+	controls(img.mlx);
+	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
+	mlx_loop(img.mlx);
+	return (0);
 }
 
