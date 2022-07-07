@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/07 22:06:07 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/07 22:40:04 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ int main(int argc, char **argv)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	square(&img, 10, 10);
 	circle(&img);
-	controls(img.mlx);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
+	controls(&img);
 	mlx_loop(img.mlx);
 	return (0);
 }

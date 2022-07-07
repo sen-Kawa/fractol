@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/07 22:05:04 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/07 22:09:48 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
+# define ESC 53
 
 #include <stdio.h>
 #include <stdlib.h>
