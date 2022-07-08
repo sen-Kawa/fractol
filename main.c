@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/07 23:04:21 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/08 08:37:37 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	square(t_data *data, int line_x, int line_y)
 			while (line_x <= 100)
 			{
 				if ((line_y == 10 || line_y == 100) || (line_x == 10 || line_x == 100))
-					my_mlx_pixel_put(data, line_x, line_y, 0x0000FFFF);
+					my_mlx_pixel_put(data, line_x, line_y, BABYBLUE);
 				line_x++;
 			}
 			line_x = 10;
@@ -47,10 +47,10 @@ void	circle(t_data *data)
 	radius_len = 50;
 	radius = 0;
 
-	my_mlx_pixel_put(data, center_x, center_y, 0x00FF0000);
+	my_mlx_pixel_put(data, center_x, center_y, GREEN);
 	while (radius <= radius_len)
 	{
-		my_mlx_pixel_put(data, center_x, center_y, 0x00FF0000);
+		my_mlx_pixel_put(data, center_x, center_y, GREEN);
 		center_x++;
 		radius++;
 	}
