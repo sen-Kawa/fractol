@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/08 08:37:37 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/08 10:01:46 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,29 @@ int	arg_handling(int argc, char **argv)
 	}
 	if (argc == 2)
 	{
-		ft_printf("%s", argv[1]);
+		if ((ft_strncmp(argv[1], "Julia", 6)) == 0)
+			julia(argv);
+		else if ((ft_strncmp(argv[1], "Mandelbrot", 11)) == 0)
+			mandelbrot(argv);
+		else
+		{
+			ft_printf("Please pass a valid choice, either Julia or Mandelbrot. Try again :)\n");
+			exit (EXIT_FAILURE);
+		}
 	}
 	return (0);
+}
+
+void	julia(char **argv)
+{
+		ft_printf("%s", argv[1]);
+		square(&img, 10, 10);
+}
+
+void	mandelbrot(char **argv)
+{
+		ft_printf("%s", argv[1]);
+		circle(&img);
 }
 
 int main(int argc, char **argv)
@@ -79,8 +99,6 @@ int main(int argc, char **argv)
 	img.mlx_win = mlx_new_window(img.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "FractOl!");
 	img.img = mlx_new_image(img.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	square(&img, 10, 10);
-	circle(&img);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
 	controls(&img);
 	mlx_loop(img.mlx);

@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/08 09:10:58 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/08 10:00:09 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@
 //Events
 # define RED_CROSS 17
 # define KEY_PRESS 2
+# define MOUSE_MOVE 6
 
 //Keys
 # define ESC 53
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
+
 
 //Colours
 # define RED 0x00FF0000
@@ -64,5 +68,7 @@ int		arg_handling(int argc, char **argv);
 void	controls(t_data *data);
 int		close_win(void *param);
 int		key_press(int keycode, void *param);
+void	julia(char **argv);
+void	mandelbrot(char **argv);
 
 #endif
