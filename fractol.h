@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/10 11:49:27 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/10 15:16:46 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 //Window size
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
+# define ZERO_X 960
+# define ZERO_Y 540
+# define ZERO_Y 540
+# define ZERO_Y 540
+# define ZERO_Y 540
+# define ZERO_Y 540
 
 //Events
 # define RED_CROSS 17
