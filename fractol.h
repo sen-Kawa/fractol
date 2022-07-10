@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/08 10:00:09 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/08 14:46:52 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FRACTOL_H
 
 //Window size
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 //Events
 # define RED_CROSS 17
@@ -64,11 +64,11 @@ typedef struct s_rect
 void    circle(t_data *data);
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void    square(t_data *data, int line_x, int line_y);
-int		arg_handling(int argc, char **argv);
+int		arg_handling(int argc, char **argv, t_data *data);
 void	controls(t_data *data);
 int		close_win(void *param);
 int		key_press(int keycode, void *param);
-void	julia(char **argv);
-void	mandelbrot(char **argv);
+void	julia(int argc, t_data *data);
+void	mandelbrot(t_data *data);
 
 #endif
