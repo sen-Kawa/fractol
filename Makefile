@@ -6,7 +6,7 @@
 #    By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 18:56:29 by kaheinz           #+#    #+#              #
-#    Updated: 2022/07/07 22:37:46 by kaheinz          ###   ########.fr        #
+#    Updated: 2022/07/10 09:10:56 by kaheinz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fractol
 
 //INCLUDE = push_swap.h
 
-SRCS = main.c controls.c\
+SRCS = main.c controls.c fractals.c\
 
 LIBFT = libft/libft.a
 

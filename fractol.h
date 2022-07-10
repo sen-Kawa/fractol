@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/08 14:46:52 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/10 11:49:27 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ typedef struct s_data
     int     endian;
 }   t_data;
 
+typedef struct	s_complex
+{
+	double	r;
+	double	i;
+}	t_complex;
+
 typedef struct s_rect
 {
     int     x;
@@ -70,5 +76,7 @@ int		close_win(void *param);
 int		key_press(int keycode, void *param);
 void	julia(int argc, t_data *data);
 void	mandelbrot(t_data *data);
+t_complex	pixel_to_complex(int x, int y, t_data *data);
+void	test(t_data *data);
 
 #endif
