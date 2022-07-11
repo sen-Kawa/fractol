@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/10 15:16:46 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/11 19:04:03 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 //Window size
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
-# define ZERO_X 960
-# define ZERO_Y 540
-# define ZERO_Y 540
-# define ZERO_Y 540
-# define ZERO_Y 540
-# define ZERO_Y 540
 
 //Events
 # define RED_CROSS 17
@@ -47,6 +41,14 @@
 #include "libft/libft.h"
 #include "mlx/mlx.h"
 
+typedef struct	s_scale
+{
+	double	max_x;
+	double	min_x;
+	double	max_y;
+	double	min_y;
+}	t_scale;
+
 typedef struct s_data
 {
     void    *img;
@@ -56,6 +58,7 @@ typedef struct s_data
     int     bits_per_pixel;
     int     line_length;
     int     endian;
+	t_scale	scale;
 }   t_data;
 
 typedef struct	s_complex
@@ -81,6 +84,7 @@ void	controls(t_data *data);
 int		close_win(void *param);
 int		key_press(int keycode, void *param);
 void	julia(int argc, t_data *data);
+void	mandelbrot_init(t_data *data);
 void	mandelbrot(t_data *data);
 t_complex	pixel_to_complex(int x, int y, t_data *data);
 void	test(t_data *data);

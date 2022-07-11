@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/10 11:48:50 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/11 15:12:13 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ int	arg_handling(int argc, char **argv, t_data *data)
 		if ((ft_strncmp(argv[1], "Julia", 6)) == 0)
 			julia(argc, data);
 		else if ((ft_strncmp(argv[1], "Mandelbrot", 11)) == 0)
+		{
+			mandelbrot_init(data);
 			mandelbrot(data);
+		}
 		else if ((ft_strncmp(argv[1], "test", 5)) == 0)
 			test(data);
 		else if ((ft_strncmp(argv[1], "--help", 7)) == 0)
