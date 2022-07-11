@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/11 19:15:16 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/11 23:38:18 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,26 @@ void	mandelbrot_init(t_data *data)
 
 void	mandelbrot(t_data *data)
 {
-//	circle(data);
 	t_complex	c;
+	int	iter;
 	int	x;
 	int	y;
-
+	
+	iter = 0;
 	x = 0;
 	y = 0;
 	while (y < 1080)
 	{
 		c = pixel_to_complex(x, y, data);
-		if (c.i == 0 && c.r == 0)
-		{
+		iter = mandelbrot_iteration(&c);
+		if (iter == 100)
 			my_mlx_pixel_put(data, x, y, BABYBLUE);
-		}
+		else if (iter < 100 && iter >= 75)
+			my_mlx_pixel_put(data, x, y, GREEN);
+		else if (iter < 75 && iter >= 25)
+			my_mlx_pixel_put(data, x, y, RED);
+		else if (iter < 25)
+			my_mlx_pixel_put(data, x, y, BLUE);
 		x++;
 		if (x == WIN_WIDTH)
 		{
@@ -87,6 +93,45 @@ void	mandelbrot(t_data *data)
 			y++;
 		}
 	}
+}
+
+int	mandelbrot_iteration(t_complex *c)
+{
+	int	iter;
+	t_complex	m;
+
+	iter = 0;
+	m.i = 0.0;
+	m.r = 0.0;
+	while (absolute_complex(m) <= 2 && iter < MAX_ITER)
+	{
+		m = add_complex(mult_complex(m, m), c);
+		iter++;
+	}
+	return (iter);
+}
+
+double	absolute_complex(t_complex c)
+{
+	return (sqrt((pow(c.i, 2)) + (pow(c.r, 2))));
+}
+
+t_complex	add_complex(t_complex m, t_complex *c)
+{
+	t_complex	a;
+
+	a.r = m.r + c->r;
+	a.i = m.i + c->i;
+	return (a);
+}
+
+t_complex	mult_complex(t_complex m, t_complex c)
+{
+	t_complex	a;
+
+	a.r = (m.r * c.r) - (m.i * c.i);
+	a.i = (m.r * c.i) + (m.i * c.r);
+	return (a);
 }
 
 void	test(t_data *data)

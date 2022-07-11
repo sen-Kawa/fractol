@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/11 19:04:03 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/11 23:31:01 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@
 # define BLUE 0x000000FF
 # define BABYBLUE 0x0000FFFF
 
+# define MAX_ITER 100
 
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -88,5 +90,9 @@ void	mandelbrot_init(t_data *data);
 void	mandelbrot(t_data *data);
 t_complex	pixel_to_complex(int x, int y, t_data *data);
 void	test(t_data *data);
+t_complex	add_complex(t_complex m, t_complex *c);
+t_complex	mult_complex(t_complex m, t_complex c);
+double	absolute_complex(t_complex c);
+int	mandelbrot_iteration(t_complex *c);
 
 #endif
