@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/11 23:31:01 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/12 13:52:38 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 //Window size
-# define WIN_WIDTH 1920
+# define WIN_WIDTH 1080
 # define WIN_HEIGHT 1080
 
 //Events
@@ -33,6 +33,10 @@
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
 # define BABYBLUE 0x0000FFFF
+# define LILAC 0x00C5A2C5
+# define JUNGLE 0x00A7CBD0
+# define CORIANDER 0x00BDCCAC
+# define BLOSSOM 0x00DBBAC1
 
 # define MAX_ITER 100
 

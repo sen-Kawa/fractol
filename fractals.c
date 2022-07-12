@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/11 23:38:18 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/12 13:50:57 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,40 +28,19 @@ void	square(t_data *data, int line_x, int line_y)
 	}
 }
 
-void	circle(t_data *data)
-{
-	int		center_x;
-	int		center_y;
-	int		radius_len;
-	int		radius;
-
-	center_x = 500;
-	center_y = 500;
-	radius_len = 50;
-	radius = 0;
-	my_mlx_pixel_put(data, center_x, center_y, GREEN);
-	while (radius <= radius_len)
-	{
-		my_mlx_pixel_put(data, center_x, center_y, GREEN);
-		center_x++;
-		radius++;
-	}
-}
-
 void	julia(int argc, t_data *data)
 {
 	if (argc == 2)
 		square(data, 10, 10);
-//	else if (argc == 4)
-//		square(data, ft_atoi(), 10);
 }
 
 void	mandelbrot_init(t_data *data)
 {
 	data->scale.max_x = 2;
 	data->scale.min_x = -2;
-	data->scale.max_y = 2;
+//	data->scale.max_y = 2;
 	data->scale.min_y = -2;
+	data->scale.max_y = data->scale.min_y + (data->scale.max_x - data->scale.min_x) * WIN_HEIGHT / WIN_WIDTH;
 }
 
 void	mandelbrot(t_data *data)
@@ -78,14 +57,20 @@ void	mandelbrot(t_data *data)
 	{
 		c = pixel_to_complex(x, y, data);
 		iter = mandelbrot_iteration(&c);
-		if (iter == 100)
-			my_mlx_pixel_put(data, x, y, BABYBLUE);
-		else if (iter < 100 && iter >= 75)
-			my_mlx_pixel_put(data, x, y, GREEN);
-		else if (iter < 75 && iter >= 25)
+	//	if (iter == 100)
+	//		my_mlx_pixel_put(data, x, y, BABYBLUE);
+		if (iter < 100 && iter >= 75)
 			my_mlx_pixel_put(data, x, y, RED);
-		else if (iter < 25)
-			my_mlx_pixel_put(data, x, y, BLUE);
+		else if (iter < 75 && iter >= 25)
+			my_mlx_pixel_put(data, x, y, BABYBLUE);
+		else if (iter < 25 && iter >= 20)
+			my_mlx_pixel_put(data, x, y, CORIANDER);
+		else if (iter < 20 && iter >= 15)
+			my_mlx_pixel_put(data, x, y, JUNGLE);
+		else if (iter < 15 && iter >= 5)
+			my_mlx_pixel_put(data, x, y, BLOSSOM);
+		else if (iter < 5)
+			my_mlx_pixel_put(data, x, y, LILAC);
 		x++;
 		if (x == WIN_WIDTH)
 		{
