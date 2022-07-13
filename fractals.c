@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/12 13:50:57 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/13 11:53:13 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	julia(int argc, t_data *data)
 
 void	mandelbrot_init(t_data *data)
 {
-	data->scale.max_x = 2;
+	data->scale.max_x = 1;
 	data->scale.min_x = -2;
 //	data->scale.max_y = 2;
-	data->scale.min_y = -2;
+	data->scale.min_y = -1.5;
 	data->scale.max_y = data->scale.min_y + (data->scale.max_x - data->scale.min_x) * WIN_HEIGHT / WIN_WIDTH;
 }
 
