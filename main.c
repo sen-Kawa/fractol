@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/12 11:37:59 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/13 13:49:14 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	main(int argc, char **argv)
 	t_data	img;
 
 	img.mlx = mlx_init();
-		img.mlx_win = mlx_new_window(img.mlx, WIN_WIDTH, WIN_HEIGHT, "FractOl!");
-		img.img = mlx_new_image(img.mlx, WIN_WIDTH, WIN_HEIGHT);
+	img.mlx_win = mlx_new_window(img.mlx, WIN_WIDTH, WIN_HEIGHT, "FractOl!");
+	img.img = mlx_new_image(img.mlx, WIN_WIDTH, WIN_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	arg_handling(argc, argv, &img);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);

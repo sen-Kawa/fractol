@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/13 11:53:13 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/13 14:35:07 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	mandelbrot_init(t_data *data)
 {
 	data->scale.max_x = 1;
 	data->scale.min_x = -2;
-//	data->scale.max_y = 2;
 	data->scale.min_y = -1.5;
 	data->scale.max_y = data->scale.min_y + (data->scale.max_x - data->scale.min_x) * WIN_HEIGHT / WIN_WIDTH;
 }
@@ -51,6 +50,18 @@ void	mandelbrot(t_data *data)
 	int	y;
 	
 	iter = 0;
+	x = 0;
+	y = 0;
+	while (y < WIN_HEIGHT)
+	{
+		my_mlx_pixel_put(data, x, y, BLACK);
+		x++;
+		if (x == WIN_WIDTH)
+		{
+			x = 0;
+			y++;
+		}
+	}
 	x = 0;
 	y = 0;
 	while (y < 1080)

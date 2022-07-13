@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/08 09:32:15 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/13 14:51:34 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,42 @@ int	mouse_move(int x, int y, void *param)
 int	key_press(int keycode, void *param)
 {
 	t_data *fractol;
-	
+	double subs_x;
+	double subs_y;
+
 	fractol = (t_data *)param;
+	subs_x = (fractol->scale.max_x - fractol->scale.min_x);
+	subs_y = (fractol->scale.max_y - fractol->scale.min_y);
 	if (keycode == ESC)
 		exit(EXIT_SUCCESS);
+	else if (keycode == ARROW_RIGHT)
+	{
+		fractol->scale.min_x += subs_x * DISTANCE;
+		fractol->scale.max_x += subs_x * DISTANCE;
+		mandelbrot(fractol);
+		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
+	}
+	else if (keycode == ARROW_LEFT)
+	{
+		fractol->scale.min_x -= subs_x * DISTANCE;
+		fractol->scale.max_x -= subs_x * DISTANCE;
+		mandelbrot(fractol);
+		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
+	}
+	else if (keycode == ARROW_DWN)
+	{
+		fractol->scale.min_y += subs_y * DISTANCE;
+		fractol->scale.max_y += subs_y * DISTANCE;
+		mandelbrot(fractol);
+		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
+	}
+	else if (keycode == ARROW_UP)
+	{
+		fractol->scale.min_y -= subs_y * DISTANCE;
+		fractol->scale.max_y -= subs_y * DISTANCE;
+		mandelbrot(fractol);
+		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
+	}
 	return (0);
 }
 

@@ -6,30 +6,40 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/12 13:52:38 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/13 14:45:48 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-//Window size
+// Window size
 # define WIN_WIDTH 1080
 # define WIN_HEIGHT 1080
 
-//Events
+// Zoom and Movement
+# define DISTANCE 0.05
+
+// Events
 # define RED_CROSS 17
 # define KEY_PRESS 2
 # define MOUSE_MOVE 6
 
-//Keys
+// Keys
 # define ESC 53
+# define ARROW_UP 126
+# define ARROW_DWN 125
+# define ARROW_LEFT 123
+# define ARROW_RIGHT 124
+
+// Mouse
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
 
 //Colours
 # define RED 0x00FF0000
+# define BLACK 0x00000000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
 # define BABYBLUE 0x0000FFFF
