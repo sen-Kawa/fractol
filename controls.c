@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/13 14:51:34 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/13 17:01:28 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	key_press(int keycode, void *param)
 	fractol = (t_data *)param;
 	subs_x = (fractol->scale.max_x - fractol->scale.min_x);
 	subs_y = (fractol->scale.max_y - fractol->scale.min_y);
+
 	if (keycode == ESC)
 		exit(EXIT_SUCCESS);
 	else if (keycode == ARROW_RIGHT)
@@ -60,6 +61,24 @@ int	key_press(int keycode, void *param)
 	{
 		fractol->scale.min_y -= subs_y * DISTANCE;
 		fractol->scale.max_y -= subs_y * DISTANCE;
+		mandelbrot(fractol);
+		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
+	}
+	else if (keycode == ZOOM_IN)
+	{
+		fractol->scale.min_x = fractol->scale.max_x + ZOOM_IN_VAL * (fractol->scale.min_x - fractol->scale.max_x);
+		fractol->scale.max_x = fractol->scale.max_x + ((fractol->scale.min_x - fractol->scale.max_x) - ZOOM_IN_VAL * (fractol->scale.min_x - fractol->scale.max_x)) / 2;
+		fractol->scale.min_y = fractol->scale.max_y + ZOOM_IN_VAL * (fractol->scale.min_y - fractol->scale.max_y);
+		fractol->scale.max_y = fractol->scale.max_y + ((fractol->scale.min_y - fractol->scale.max_y) - ZOOM_IN_VAL * (fractol->scale.min_y - fractol->scale.max_y)) / 2;
+		mandelbrot(fractol);
+		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
+	}
+	else if (keycode == ZOOM_OUT)
+	{
+		fractol->scale.min_x = fractol->scale.max_x + ZOOM_OUT_VAL * (fractol->scale.min_x - fractol->scale.max_x);
+		fractol->scale.max_x = fractol->scale.max_x + ((fractol->scale.min_x - fractol->scale.max_x) - ZOOM_OUT_VAL * (fractol->scale.min_x - fractol->scale.max_x)) / 2;
+		fractol->scale.min_y = fractol->scale.max_y + ZOOM_OUT_VAL * (fractol->scale.min_y - fractol->scale.max_y);
+		fractol->scale.max_y = fractol->scale.max_y + ((fractol->scale.min_y - fractol->scale.max_y) - ZOOM_OUT_VAL * (fractol->scale.min_y - fractol->scale.max_y)) / 2;
 		mandelbrot(fractol);
 		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
 	}

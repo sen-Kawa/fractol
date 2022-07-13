@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/13 14:45:48 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/13 16:46:32 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@
 
 // Zoom and Movement
 # define DISTANCE 0.05
+# define ZOOM_IN_VAL 0.5
+# define ZOOM_OUT_VAL 2
 
 // Events
-# define RED_CROSS 17
 # define KEY_PRESS 2
+# define RED_CROSS 17
 # define MOUSE_MOVE 6
 
 // Keys
 # define ESC 53
+# define ZOOM_IN 34
+# define ZOOM_OUT 31
 # define ARROW_UP 126
 # define ARROW_DWN 125
 # define ARROW_LEFT 123
@@ -48,7 +52,7 @@
 # define CORIANDER 0x00BDCCAC
 # define BLOSSOM 0x00DBBAC1
 
-# define MAX_ITER 100
+# define MAX_ITER 40
 
 #include <math.h>
 #include <stdio.h>
