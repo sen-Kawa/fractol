@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/13 14:35:07 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/21 16:02:14 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	mandelbrot(t_data *data)
 	}
 	x = 0;
 	y = 0;
-	while (y < 1080)
+	while (y < WIN_HEIGHT)
 	{
 		c = pixel_to_complex(x, y, data);
 		iter = mandelbrot_iteration(&c);

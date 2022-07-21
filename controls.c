@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/13 17:01:28 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/21 15:47:02 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	controls(t_data *data)
 {
+//	ft_printf("hey");
+	mlx_key_hook(data->mlx_win, &print_key, &data->img);
 	mlx_hook(data->mlx_win, RED_CROSS, 0, close_win, data);
-	mlx_hook(data->mlx_win, KEY_PRESS, 0, key_press, data);
+//	ft_printf("%i", mlx_hook(data->mlx_win, KEY_PRESS, 0, key_press, data));
+	mlx_hook(data->mlx_win, KEY_PRESS, 1L<<0, key_press, data);
+
 //	mlx_hook(data->mlx_win, MOUSE_MOVE, 0, key_press, data);
 }
 /*
@@ -33,6 +37,9 @@ int	key_press(int keycode, void *param)
 	fractol = (t_data *)param;
 	subs_x = (fractol->scale.max_x - fractol->scale.min_x);
 	subs_y = (fractol->scale.max_y - fractol->scale.min_y);
+
+//	(void)keycode;
+//	(void)param;
 
 	if (keycode == ESC)
 		exit(EXIT_SUCCESS);

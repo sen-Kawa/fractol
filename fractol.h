@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/13 16:46:32 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/21 16:02:46 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FRACTOL_H
 
 // Window size
-# define WIN_WIDTH 1080
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 800
 
 // Zoom and Movement
 # define DISTANCE 0.05
@@ -28,7 +28,7 @@
 # define MOUSE_MOVE 6
 
 // Keys
-# define ESC 53
+# define ESC 65307
 # define ZOOM_IN 34
 # define ZOOM_OUT 31
 # define ARROW_UP 126
@@ -58,8 +58,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+//#include <X11/keysym.h>
 #include "libft/libft.h"
-#include "mlx/mlx.h"
+#include "mlx_linux/mlx.h"
 
 typedef struct	s_scale
 {
@@ -112,5 +113,6 @@ t_complex	add_complex(t_complex m, t_complex *c);
 t_complex	mult_complex(t_complex m, t_complex c);
 double	absolute_complex(t_complex c);
 int	mandelbrot_iteration(t_complex *c);
+int    print_key(int keycode, t_data *data);
 
 #endif

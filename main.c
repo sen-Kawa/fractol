@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/13 13:49:14 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/21 16:01:17 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ int	arg_handling(int argc, char **argv, t_data *data)
 		}
 	}
 	return (0);
+}
+int    print_key(int keycode, t_data *data)
+{
+    (void)data;
+    ft_printf("This is the keycode:%i", keycode);
+    return 0;
 }
 
 int	main(int argc, char **argv)
