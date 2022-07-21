@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/21 16:02:46 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/21 16:36:53 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,23 @@
 # define MOUSE_MOVE 6
 
 // Keys
+#if __linux__
 # define ESC 65307
+# define ZOOM_IN 105
+# define ZOOM_OUT 111
+# define ARROW_UP 65362
+# define ARROW_DWN 65364
+# define ARROW_LEFT 65361
+# define ARROW_RIGHT 65363
+#elif __APPLE__
+# define ESC 53
 # define ZOOM_IN 34
 # define ZOOM_OUT 31
 # define ARROW_UP 126
 # define ARROW_DWN 125
 # define ARROW_LEFT 123
 # define ARROW_RIGHT 124
+#endif
 
 // Mouse
 # define SCROLL_UP 4
