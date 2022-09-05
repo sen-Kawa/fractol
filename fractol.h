@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/21 16:36:53 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/21 23:36:47 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 // Zoom and Movement
 # define DISTANCE 0.05
-# define ZOOM_IN_VAL 0.5
 # define ZOOM_OUT_VAL 2
+# define ZOOM_IN_VAL 0.5
 
 // Events
 # define KEY_PRESS 2
@@ -29,6 +29,7 @@
 
 // Keys
 #if __linux__
+
 # define ESC 65307
 # define ZOOM_IN 105
 # define ZOOM_OUT 111
@@ -36,7 +37,9 @@
 # define ARROW_DWN 65364
 # define ARROW_LEFT 65361
 # define ARROW_RIGHT 65363
+
 #elif __APPLE__
+
 # define ESC 53
 # define ZOOM_IN 34
 # define ZOOM_OUT 31
@@ -44,12 +47,12 @@
 # define ARROW_DWN 125
 # define ARROW_LEFT 123
 # define ARROW_RIGHT 124
+
 #endif
 
 // Mouse
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
-
 
 //Colours
 # define RED 0x00FF0000
