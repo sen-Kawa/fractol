@@ -6,40 +6,21 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/05 14:13:23 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/05 18:50:59 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	square(t_data *data, int line_x, int line_y)
+void	draw_fractal(t_data *f)
 {
-	while (line_y <= 100)
-	{
-		while (line_x <= 100)
-		{
-			if ((line_y == 10 || line_y == 100)
-				|| (line_x == 10 || line_x == 100))
-				my_mlx_pixel_put(data, line_x, line_y, BABYBLUE);
-			line_x++;
-		}
-		line_x = 10;
-		line_y++;
-	}
+		write(1, "Hello", 5);
 }
 
 void	julia(int argc, t_data *data)
 {
 	if (argc == 2)
-		square(data, 10, 10);
-}
-
-void	mandelbrot_init(t_data *data)
-{
-	data->scale.max_x = 1.0;
-	data->scale.min_x = -2.0;
-	data->scale.min_y = -1.5;
-	data->scale.max_y = data->scale.min_y + (data->scale.max_x - data->scale.min_x) * WIN_HEIGHT / WIN_WIDTH;
+		write(1, "Julia", 5);
 }
 
 void	mandelbrot(t_data *data)
@@ -128,27 +109,6 @@ t_complex	mult_complex(t_complex m, t_complex c)
 	a.r = (m.r * c.r) - (m.i * c.i);
 	a.i = (m.r * c.i) + (m.i * c.r);
 	return (a);
-}
-
-void	test(t_data *data)
-{
-	t_complex	c;
-	int	y;
-	int	x;
-
-	x = 0;
-	y = 0;
-	while (c.i < 1)
-	{
-		c = pixel_to_complex(x, y, data);
-		my_mlx_pixel_put(data, x, y, BABYBLUE);
-		if (x == 960)
-		{
-			x = 0;
-			y++;
-		}
-		x++;
-	}
 }
 
 t_complex	pixel_to_complex(int x, int y, t_data *data)

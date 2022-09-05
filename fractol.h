@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/21 23:36:47 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/05 19:01:28 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,19 @@
 #include "libft/libft.h"
 #include "mlx_linux/mlx.h"
 
-typedef struct	s_scale
-{
-	double	max_x;
-	double	min_x;
-	double	max_y;
-	double	min_y;
-}	t_scale;
-
 typedef struct s_data
 {
     void    *img;
     void    *mlx;
     void    *mlx_win;
     char    *addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-	t_scale	scale;
+    int     bits_per_pixel; //used in my_mlx_pixel_put
+    int     line_length; //used in my_mlx_pixel_put
+    int     endian; //used in mlx_get_data_addrr in main
+	double	max_r;
+	double	min_r;
+	double	max_i;
+	double	min_i;
 }   t_data;
 
 typedef struct	s_complex
@@ -101,31 +96,18 @@ typedef struct	s_complex
 	double	i;
 }	t_complex;
 
-typedef struct s_rect
-{
-    int     x;
-    int     y;
-    int     width;
-    int     height;
-    int     color;
-}   t_rect;
-
-void    circle(t_data *data);
+double	absolute_complex(t_complex c);
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void    square(t_data *data, int line_x, int line_y);
-int		arg_handling(int argc, char **argv, t_data *data);
 void	controls(t_data *data);
+//void	julia(int argc, t_data *data);
+//void	mandelbrot(t_data *data);
+void	draw_fractal(t_data *f);
+int		arg_handling(int argc, char **argv, t_data *data);
 int		close_win(void *param);
 int		key_press(int keycode, void *param);
-void	julia(int argc, t_data *data);
-void	mandelbrot_init(t_data *data);
-void	mandelbrot(t_data *data);
-t_complex	pixel_to_complex(int x, int y, t_data *data);
-void	test(t_data *data);
+int		print_key(int keycode, t_data *data);
+//t_complex	pixel_to_complex(int x, int y, t_data *data);
 t_complex	add_complex(t_complex m, t_complex *c);
 t_complex	mult_complex(t_complex m, t_complex c);
-double	absolute_complex(t_complex c);
-int	mandelbrot_iteration(t_complex *c);
-int    print_key(int keycode, t_data *data);
 
 #endif

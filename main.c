@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/21 16:01:17 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/05 18:59:14 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	arg_handling(int argc, char **argv, t_data *data)
+int	arg_handling(int argc, char **argv, t_data *f)
 {
 	if (argc == 1)
 	{
@@ -30,14 +30,11 @@ int	arg_handling(int argc, char **argv, t_data *data)
 	if (argc >= 2)
 	{
 		if ((ft_strncmp(argv[1], "Julia", 6)) == 0)
-			julia(argc, data);
+	//		julia(argc, );
+			draw_fractal(f);
 		else if ((ft_strncmp(argv[1], "Mandelbrot", 11)) == 0)
-		{
-			mandelbrot_init(data);
-			mandelbrot(data);
-		}
-		else if ((ft_strncmp(argv[1], "test", 5)) == 0)
-			test(data);
+	//		mandelbrot(data);
+			draw_fractal(f);
 		else if ((ft_strncmp(argv[1], "--help", 7)) == 0)
 		{
 			ft_printf("Fractals available: Julia or Mandelbrot.\n");
@@ -60,15 +57,20 @@ int    print_key(int keycode, t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data	img;
+	t_data	f;
 
-	img.mlx = mlx_init();
-	img.mlx_win = mlx_new_window(img.mlx, WIN_WIDTH, WIN_HEIGHT, "FractOl!");
-	img.img = mlx_new_image(img.mlx, WIN_WIDTH, WIN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	arg_handling(argc, argv, &img);
-	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
-	controls(&img);
-	mlx_loop(img.mlx);
+	f.mlx = mlx_init();
+	f.mlx_win = mlx_new_window(f.mlx, WIN_WIDTH, WIN_HEIGHT, "FractOl!");
+	f.img = mlx_new_image(f.mlx, WIN_WIDTH, WIN_HEIGHT);
+	f.addr = mlx_get_data_addr(f.img, &f.bits_per_pixel, &f.line_length, &f.endian);
+	f.min_r = 2.0;
+	f.max_r = 1.0;
+	f.min_i = -1.5;
+	f.max_i = f.min_i + (f.max_r - f.min_r) * WIN_HEIGHT / WIN_WIDTH;
+	arg_handling(argc, argv, &f);
+//	draw_fractal(argc, argv, &f);
+	mlx_put_image_to_window(f.mlx, f.mlx_win, f.img, 0, 0);
+	controls(&f);
+	mlx_loop(f.mlx);
 	return (0);
 }
