@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/06 17:03:38 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/06 18:35:01 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,18 @@ int	arg_handling(int argc, char **argv, t_data *f)
 	if (argc >= 2)
 	{
 		if ((ft_strncmp(argv[1], "Julia", 6)) == 0)
-	//		julia(argc, );
-			draw_fractal(f);
+		{
+			if (argc == 4)
+			{
+				f->ki = atof(argv[2]);
+				f->kr = atof(argv[3]);
+				printf("ki %f", f->ki);
+				printf("kr %f", f->kr);
+			}
+			draw_fractal(f, 4);
+		}
 		else if ((ft_strncmp(argv[1], "Mandelbrot", 11)) == 0)
-	//		mandelbrot(data);
-			draw_fractal(f);
+			draw_fractal(f, 5);
 		else if ((ft_strncmp(argv[1], "--help", 7)) == 0)
 		{
 			ft_printf("Fractals available: Julia or Mandelbrot.\n");
@@ -67,6 +74,8 @@ int	main(int argc, char **argv)
 	f.max_r = 1.0;
 	f.min_i = -1.5;
 	f.max_i = f.min_i + (f.max_r - f.min_r) * WIN_HEIGHT / WIN_WIDTH;
+	f.kr = -0.766667;
+	f.ki = -0.090000;
 	arg_handling(argc, argv, &f);
 	mlx_put_image_to_window(f.mlx, f.mlx_win, f.img, 0, 0);
 	controls(&f);

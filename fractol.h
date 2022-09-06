@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/05 19:31:28 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/06 17:22:28 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FRACTOL_H
 
 // Window size
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 800
+# define WIN_WIDTH 900
+# define WIN_HEIGHT 900
 
 // Zoom and Movement
 # define DISTANCE 0.05
@@ -65,7 +65,7 @@
 # define CORIANDER 0x00BDCCAC
 # define BLOSSOM 0x00DBBAC1
 
-# define MAX_ITER 40
+# define MAX_ITER 80
 
 #include <math.h>
 #include <stdio.h>
@@ -88,13 +88,15 @@ typedef struct s_data
 	double	min_r;
 	double	max_i;
 	double	min_i;
+	double	kr;
+	double	ki;
 }   t_data;
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	controls(t_data *data);
-//void	julia(int argc, t_data *data);
 void	mandelbrot(t_data *f, int x, int y, double cr, double ci);
-void	draw_fractal(t_data *f);
+void	julia(t_data *f, int x, int y, double zr, double zi);
+void	draw_fractal(t_data *f, int n);
 int		arg_handling(int argc, char **argv, t_data *data);
 int		close_win(void *param);
 int		key_press(int keycode, void *param);
