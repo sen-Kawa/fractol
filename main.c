@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/05 18:59:14 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/06 17:03:38 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,11 @@ int	main(int argc, char **argv)
 	f.mlx_win = mlx_new_window(f.mlx, WIN_WIDTH, WIN_HEIGHT, "FractOl!");
 	f.img = mlx_new_image(f.mlx, WIN_WIDTH, WIN_HEIGHT);
 	f.addr = mlx_get_data_addr(f.img, &f.bits_per_pixel, &f.line_length, &f.endian);
-	f.min_r = 2.0;
+	f.min_r = -2.0;
 	f.max_r = 1.0;
 	f.min_i = -1.5;
 	f.max_i = f.min_i + (f.max_r - f.min_r) * WIN_HEIGHT / WIN_WIDTH;
 	arg_handling(argc, argv, &f);
-//	draw_fractal(argc, argv, &f);
 	mlx_put_image_to_window(f.mlx, f.mlx_win, f.img, 0, 0);
 	controls(&f);
 	mlx_loop(f.mlx);

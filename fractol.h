@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/05 19:01:28 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/05 19:31:28 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,24 +90,14 @@ typedef struct s_data
 	double	min_i;
 }   t_data;
 
-typedef struct	s_complex
-{
-	double	r;
-	double	i;
-}	t_complex;
-
-double	absolute_complex(t_complex c);
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	controls(t_data *data);
 //void	julia(int argc, t_data *data);
-//void	mandelbrot(t_data *data);
+void	mandelbrot(t_data *f, int x, int y, double cr, double ci);
 void	draw_fractal(t_data *f);
 int		arg_handling(int argc, char **argv, t_data *data);
 int		close_win(void *param);
 int		key_press(int keycode, void *param);
 int		print_key(int keycode, t_data *data);
-//t_complex	pixel_to_complex(int x, int y, t_data *data);
-t_complex	add_complex(t_complex m, t_complex *c);
-t_complex	mult_complex(t_complex m, t_complex c);
 
 #endif

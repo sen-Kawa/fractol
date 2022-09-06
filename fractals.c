@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/05 18:50:59 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/06 17:03:11 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,113 +14,51 @@
 
 void	draw_fractal(t_data *f)
 {
-		write(1, "Hello", 5);
-}
-
-void	julia(int argc, t_data *data)
-{
-	if (argc == 2)
-		write(1, "Julia", 5);
-}
-
-void	mandelbrot(t_data *data)
-{
-	t_complex	c;
-	int	iter;
 	int	x;
 	int	y;
-	
-	iter = 0;
-	x = 0;
-	y = 0;
-	while (y < WIN_HEIGHT)
+	double	pr;
+	double	pi;
+
+	y = -1;
+	while (++y < WIN_HEIGHT)
 	{
-		my_mlx_pixel_put(data, x, y, BLACK);
-		x++;
-		if (x == WIN_WIDTH)
+		x = -1;
+		while (++x < WIN_WIDTH)
 		{
-			x = 0;
-			y++;
+			pr = f->min_r + (double)x * (f->max_r - f->min_r) / WIN_WIDTH;
+			pi = f->max_i + (double)y * (f->min_i - f->max_i) / WIN_HEIGHT;
+			mandelbrot(f, x, y, pr, pi);
 		}
 	}
-	x = 0;
-	y = 0;
-	while (y < WIN_HEIGHT)
+//			mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
+}
+
+void	mandelbrot(t_data *f, int x, int y, double cr, double ci)
+{
+	int	n;
+	double	zr;
+	double	zi;
+	double	tmp;
+	int	is_in_set;
+
+	zr = 0;
+	zi = 0;
+	n = -1;
+	is_in_set = 1;
+	while (n < MAX_ITER)
 	{
-		c = pixel_to_complex(x, y, data);
-		iter = mandelbrot_iteration(&c);
-	//	if (iter == 100)
-	//		my_mlx_pixel_put(data, x, y, BABYBLUE);
-		if (iter < 100 && iter >= 75)
-			my_mlx_pixel_put(data, x, y, RED);
-		else if (iter < 75 && iter >= 25)
-			my_mlx_pixel_put(data, x, y, BABYBLUE);
-		else if (iter < 25 && iter >= 20)
-			my_mlx_pixel_put(data, x, y, CORIANDER);
-		else if (iter < 20 && iter >= 15)
-			my_mlx_pixel_put(data, x, y, JUNGLE);
-		else if (iter < 15 && iter >= 5)
-			my_mlx_pixel_put(data, x, y, BLOSSOM);
-		else if (iter < 5)
-			my_mlx_pixel_put(data, x, y, LILAC);
-		x++;
-		if (x == WIN_WIDTH)
+		if ((zr * zr + zi * zi) > 4.0)
 		{
-			x = 0;
-			y++;
+			is_in_set = 0;
+			break ;
 		}
+		tmp = 2 * zr * zi + ci;
+		zr = zr * zr - zi * zi + cr;
+		zi = tmp;
+		n++;
 	}
-}
-
-int	mandelbrot_iteration(t_complex *c)
-{
-	int	iter;
-	t_complex	m;
-
-	iter = 0;
-	m.i = 0.0;
-	m.r = 0.0;
-	while (absolute_complex(m) <= 2 && iter < MAX_ITER)
-	{
-		m = add_complex(mult_complex(m, m), c);
-		iter++;
-	}
-	return (iter);
-}
-
-double	absolute_complex(t_complex c)
-{
-	return (sqrt((pow(c.i, 2)) + (pow(c.r, 2))));
-}
-
-t_complex	add_complex(t_complex m, t_complex *c)
-{
-	t_complex	a;
-
-	a.r = m.r + c->r;
-	a.i = m.i + c->i;
-	return (a);
-}
-
-t_complex	mult_complex(t_complex m, t_complex c)
-{
-	t_complex	a;
-
-	a.r = (m.r * c.r) - (m.i * c.i);
-	a.i = (m.r * c.i) + (m.i * c.r);
-	return (a);
-}
-
-t_complex	pixel_to_complex(int x, int y, t_data *data)
-{
-	t_complex	comp;
-	int	range_x;
-	int	range_y;
-
-	(void) data;
-	range_x = data->scale.max_x - data->scale.min_x;
-	range_y = data->scale.max_y - data->scale.min_y;
-	comp.r = data->scale.min_x + (((float)x * range_x) / (WIN_WIDTH));
-	comp.i = data->scale.min_y + (((float)y * range_y) / (WIN_HEIGHT));
-	return (comp);
+	if (is_in_set == 1)
+		my_mlx_pixel_put(f, x, y, BLACK);
+	else
+		my_mlx_pixel_put(f, x, y, CORIANDER);
 }
