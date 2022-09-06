@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/06 17:18:50 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/06 19:51:50 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	draw_fractal(t_data *f, int n)
 {
-	int	x;
-	int	y;
 	double	pr;
 	double	pi;
+	int		x;
+	int		y;
 
 	y = -1;
 	while (++y < WIN_HEIGHT)
@@ -37,17 +37,17 @@ void	draw_fractal(t_data *f, int n)
 
 void	mandelbrot(t_data *f, int x, int y, double cr, double ci)
 {
-	int	n;
 	double	zr;
 	double	zi;
 	double	tmp;
-	int	is_in_set;
+	int		n;
+	int		is_in_set;
 
 	zr = 0;
 	zi = 0;
 	n = -1;
 	is_in_set = 1;
-	while (n < MAX_ITER)
+	while (++n < MAX_ITER)
 	{
 		if ((zr * zr + zi * zi) > 4.0)
 		{
@@ -57,7 +57,6 @@ void	mandelbrot(t_data *f, int x, int y, double cr, double ci)
 		tmp = 2 * zr * zi + ci;
 		zr = zr * zr - zi * zi + cr;
 		zi = tmp;
-		n++;
 	}
 	if (is_in_set == 1)
 		my_mlx_pixel_put(f, x, y, BLACK);
@@ -67,9 +66,9 @@ void	mandelbrot(t_data *f, int x, int y, double cr, double ci)
 
 void	julia(t_data *f, int x, int y, double zr, double zi)
 {
-	int	n;
 	double	tmp;
-	int	is_in_set;
+	int		n;
+	int		is_in_set;
 
 	n = -1;
 	is_in_set = 1;

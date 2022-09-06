@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/06 18:35:01 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/06 20:22:00 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + (y * data->line_len + x * (data->bit_per_pix / 8));
 	*(unsigned int *)dst = color;
 }
 
@@ -30,16 +30,7 @@ int	arg_handling(int argc, char **argv, t_data *f)
 	if (argc >= 2)
 	{
 		if ((ft_strncmp(argv[1], "Julia", 6)) == 0)
-		{
-			if (argc == 4)
-			{
-				f->ki = atof(argv[2]);
-				f->kr = atof(argv[3]);
-				printf("ki %f", f->ki);
-				printf("kr %f", f->kr);
-			}
 			draw_fractal(f, 4);
-		}
 		else if ((ft_strncmp(argv[1], "Mandelbrot", 11)) == 0)
 			draw_fractal(f, 5);
 		else if ((ft_strncmp(argv[1], "--help", 7)) == 0)
@@ -55,11 +46,12 @@ int	arg_handling(int argc, char **argv, t_data *f)
 	}
 	return (0);
 }
-int    print_key(int keycode, t_data *data)
+
+int	print_key(int keycode, t_data *data)
 {
-    (void)data;
-    ft_printf("This is the keycode:%i", keycode);
-    return 0;
+	(void)data;
+	ft_printf("This is the keycode:%i", keycode);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -69,7 +61,7 @@ int	main(int argc, char **argv)
 	f.mlx = mlx_init();
 	f.mlx_win = mlx_new_window(f.mlx, WIN_WIDTH, WIN_HEIGHT, "FractOl!");
 	f.img = mlx_new_image(f.mlx, WIN_WIDTH, WIN_HEIGHT);
-	f.addr = mlx_get_data_addr(f.img, &f.bits_per_pixel, &f.line_length, &f.endian);
+	f.addr = mlx_get_data_addr(f.img, &f.bit_per_pix, &f.line_len, &f.endian);
 	f.min_r = -2.0;
 	f.max_r = 1.0;
 	f.min_i = -1.5;
@@ -77,8 +69,8 @@ int	main(int argc, char **argv)
 	f.kr = -0.766667;
 	f.ki = -0.090000;
 	arg_handling(argc, argv, &f);
-	mlx_put_image_to_window(f.mlx, f.mlx_win, f.img, 0, 0);
 	controls(&f);
+	mlx_put_image_to_window(f.mlx, f.mlx_win, f.img, 0, 0);
 	mlx_loop(f.mlx);
 	return (0);
 }
