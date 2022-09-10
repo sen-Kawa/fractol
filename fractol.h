@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/06 20:29:47 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/10 21:27:20 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	mandelbrot(t_data *f, int x, int y, double cr, double ci);
 void	julia(t_data *f, int x, int y, double zr, double zi);
 void	draw_fractal(t_data *f, int n);
 int		arg_handling(int argc, char **argv, t_data *data);
-int		mouse_hook()
+//int		mouse_hook()
 int		close_win(void *param);
 int		key_press(int keycode, void *param);
 int		print_key(int keycode, t_data *data);

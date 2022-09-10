@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/06 20:22:00 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/10 21:20:56 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	main(int argc, char **argv)
 	f.max_r = 1.0;
 	f.min_i = -1.5;
 	f.max_i = f.min_i + (f.max_r - f.min_r) * WIN_HEIGHT / WIN_WIDTH;
-	f.kr = -0.766667;
+//	f.kr = -0.766667;
+	f.kr = -0.80;
 	f.ki = -0.090000;
 	arg_handling(argc, argv, &f);
 	controls(&f);

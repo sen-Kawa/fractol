@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/06 20:25:00 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/10 21:40:13 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,16 @@ int	key_press(int keycode, void *param)
 	{
 		f->min_r += (f->max_r - f->min_r) * DISTANCE;
 		f->max_r += (f->max_r - f->min_r) * DISTANCE;
-	//	mandelbrot(fractol);
+		draw_fractal(f, 5);
 		mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
 	}
 	else if (keycode == ARROW_LEFT)
 	{
 		f->min_r -= (f->max_r - f->min_r) * DISTANCE;
 		f->max_r -= (f->max_r - f->min_r) * DISTANCE;
-/*		fractol->scale.min_x -= subs_x * DISTANCE;
-		fractol->scale.max_x -= subs_x * DISTANCE;
-		mandelbrot(fractol);
-		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
-*/	}
+		draw_fractal(f, 5);
+		mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
+	}
 /*	else if (keycode == ARROW_DWN)
 	{
 	//	fractol->scale.min_y += subs_y * DISTANCE;
