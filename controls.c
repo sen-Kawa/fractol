@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/12 20:34:47 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/12 21:33:27 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,24 @@ int	key_press(int keycode, void *param)
 		draw_fractal(f, 5);
 		mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
 	}
-/*	else if (keycode == ZOOM_IN)
+	else if (keycode == ZOOM_IN)
 	{
-		fractol->scale.min_x = fractol->scale.max_x + ZOOM_IN_VAL * (fractol->scale.min_x - fractol->scale.max_x);
-		fractol->scale.max_x = fractol->scale.max_x + ((fractol->scale.min_x - fractol->scale.max_x) - ZOOM_IN_VAL * (fractol->scale.min_x - fractol->scale.max_x)) / 2;
-		fractol->scale.min_y = fractol->scale.max_y + ZOOM_IN_VAL * (fractol->scale.min_y - fractol->scale.max_y);
-		fractol->scale.max_y = fractol->scale.max_y + ((fractol->scale.min_y - fractol->scale.max_y) - ZOOM_IN_VAL * (fractol->scale.min_y - fractol->scale.max_y)) / 2;
-		mandelbrot(fractol);
-		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
+		f->min_r = f->max_r + ZOOM_IN_VAL * (f->min_r - f->max_r);
+		f->max_r = f->max_r + ((f->min_r - f->max_r) - ZOOM_IN_VAL * (f->min_r - f->max_r)) / 2;
+		f->min_i = f->max_i + ZOOM_IN_VAL * (f->min_i - f->max_i);
+		f->max_i = f->max_i + ((f->min_i - f->max_i) - ZOOM_IN_VAL * (f->min_i - f->max_i)) / 2;
+		draw_fractal(f, 5);
+		mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
 	}
 	else if (keycode == ZOOM_OUT)
 	{
-		fractol->scale.min_x = fractol->scale.max_x + ZOOM_OUT_VAL * (fractol->scale.min_x - fractol->scale.max_x);
-		fractol->scale.max_x = fractol->scale.max_x + ((fractol->scale.min_x - fractol->scale.max_x) - ZOOM_OUT_VAL * (fractol->scale.min_x - fractol->scale.max_x)) / 2;
-		fractol->scale.min_y = fractol->scale.max_y + ZOOM_OUT_VAL * (fractol->scale.min_y - fractol->scale.max_y);
-		fractol->scale.max_y = fractol->scale.max_y + ((fractol->scale.min_y - fractol->scale.max_y) - ZOOM_OUT_VAL * (fractol->scale.min_y - fractol->scale.max_y)) / 2;
-		mandelbrot(fractol);
-		mlx_put_image_to_window(fractol->mlx, fractol->mlx_win, fractol->img, 0, 0);
-	}*/
+		f->min_r = f->max_r + ZOOM_OUT_VAL * (f->min_r - f->max_r);
+		f->max_r = f->max_r + ((f->min_r - f->max_r) - ZOOM_OUT_VAL * (f->min_r - f->max_r)) / 2;
+		f->min_i = f->max_i + ZOOM_OUT_VAL * (f->min_i - f->max_i);
+		f->max_i = f->max_i + ((f->min_i - f->max_i) - ZOOM_OUT_VAL * (f->min_i - f->max_i)) / 2;
+		draw_fractal(f, 5);
+		mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
+	}
 	return (0);
 }
 
