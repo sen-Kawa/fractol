@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/12 22:55:33 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/12 23:32:56 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@
 # define CORIANDER 0x00BDCCAC
 # define BLOSSOM 0x00DBBAC1
 
-# define MAX_ITER 80
+# define MAX_ITER_MANDEL 80
+# define MAX_ITER_JULIA 10
 
 #include <math.h>
 #include <stdio.h>
@@ -105,7 +106,8 @@ void	controls(t_data *f);
 void	mandelbrot(t_data *f, int x, int y, double cr, double ci);
 void	julia(t_data *f, int x, int y, double zr, double zi);
 void	draw_fractal(t_data *f, int n);
-int     mouse_move(int button, int x, int y, void *param);
+int     mouse_down(int button, int x, int y, void *param);
+int     mouse_move(int x, int y, void *param);
 int		arg_handling(int argc, char **argv, t_data *data);
 int		close_win(void *param);
 int		key_press(int keycode, void *param);

@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/06 19:51:50 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/12 23:33:12 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	mandelbrot(t_data *f, int x, int y, double cr, double ci)
 	zi = 0;
 	n = -1;
 	is_in_set = 1;
-	while (++n < MAX_ITER)
+	while (++n < MAX_ITER_MANDEL)
 	{
 		if ((zr * zr + zi * zi) > 4.0)
 		{
@@ -72,7 +72,7 @@ void	julia(t_data *f, int x, int y, double zr, double zi)
 
 	n = -1;
 	is_in_set = 1;
-	while (n < MAX_ITER)
+	while (n < MAX_ITER_JULIA)
 	{
 		if ((zr * zr + zi * zi) > 4.0)
 		{

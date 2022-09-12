@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/12 23:01:54 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/12 23:34:25 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,22 @@ void	controls(t_data *f)
 	mlx_key_hook(f->mlx_win, &print_key, &f->img);
 	mlx_hook(f->mlx_win, RED_CROSS, 0, close_win, f);
 	mlx_hook(f->mlx_win, KEY_PRESS, 1L<<0, key_press, f);
-	mlx_hook(f->mlx_win, 4, 1L<<2, mouse_move, f);
-//	mlx_mouse_hook(f->mlx_win, mouse_move, f);
+	mlx_hook(f->mlx_win, 4, 1L<<2, mouse_down, f);
+	mlx_hook(f->mlx_win, 6, 1L<<6, mouse_move, f);
 }
 
-int	mouse_move(int button, int x, int y, void *param)
+int	mouse_move(int x, int y, void *param)
+{
+	t_data	*f;
+
+	f = (t_data *)param;
+	f->kr = f->min_r + (double)x * (f->max_r - f->min_r) / WIN_WIDTH;
+	f->ki = f->max_i + (double)y * (f->min_i - f->max_i) / WIN_HEIGHT;
+	draw_fractal(f, 4);
+	mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
+	return (0);
+}
+int	mouse_down(int button, int x, int y, void *param)
 {
 	t_data	*f;
 
