@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/12 23:38:29 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/13 00:46:19 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,32 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+int	two_args(int argc, char **argv, t_data *f)
+{
+	(void) argc;
+	if ((ft_strncmp(argv[1], "Julia", 6)) == 0)
+	{
+		f->fractal = 4;
+		draw_fractal(f);
+	}	
+	else if ((ft_strncmp(argv[1], "Mandelbrot", 11)) == 0)
+	{
+		f->fractal = 5;
+		draw_fractal(f);
+	}	
+	else if ((ft_strncmp(argv[1], "--help", 7)) == 0)
+	{
+		ft_printf("Fractals available: Julia or Mandelbrot.\n");
+		exit (EXIT_FAILURE);
+	}
+	else
+	{
+		ft_printf("Please pass either Julia or Mandelbrot. Try again :)\n");
+		exit (EXIT_FAILURE);
+	}
+	return (0);
+}
+
 int	arg_handling(int argc, char **argv, t_data *f)
 {
 	if (argc == 1)
@@ -28,28 +54,7 @@ int	arg_handling(int argc, char **argv, t_data *f)
 		exit (EXIT_FAILURE);
 	}
 	if (argc >= 2)
-	{
-		if ((ft_strncmp(argv[1], "Julia", 6)) == 0)
-		{
-			f->fractal = 4;
-			draw_fractal(f);
-		}	
-		else if ((ft_strncmp(argv[1], "Mandelbrot", 11)) == 0)
-		{
-			f->fractal = 5;
-			draw_fractal(f);
-		}	
-		else if ((ft_strncmp(argv[1], "--help", 7)) == 0)
-		{
-			ft_printf("Fractals available: Julia or Mandelbrot.\n");
-			exit (EXIT_FAILURE);
-		}
-		else
-		{
-			ft_printf("Please pass either Julia or Mandelbrot. Try again :)\n");
-			exit (EXIT_FAILURE);
-		}
-	}
+		two_args(argc, argv, f);
 	return (0);
 }
 
@@ -72,8 +77,7 @@ int	main(int argc, char **argv)
 	f.max_r = 1.0;
 	f.min_i = -1.5;
 	f.max_i = f.min_i + (f.max_r - f.min_r) * WIN_HEIGHT / WIN_WIDTH;
-//	f.kr = -0.766667;
-	f.kr = -0.80;
+	f.kr = -0.766667;
 	f.ki = -0.090000;
 	arg_handling(argc, argv, &f);
 	controls(&f);

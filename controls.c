@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/13 00:23:04 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/13 00:33:20 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,36 @@ int	key_press(int keycode, void *param)
 	f = (t_data *)param;
 	if (keycode == ESC)
 		exit(EXIT_SUCCESS);
-	else if (keycode == ARROW_RIGHT || keycode == ARROW_LEFT || keycode == ARROW_DWN || keycode == ARROW_UP)
+	else if (keycode == ARROW_RIGHT || keycode == ARROW_LEFT
+		|| keycode == ARROW_DWN || keycode == ARROW_UP)
 		arrow_controls(f, keycode);
-	else if (keycode == ZOOM_IN)
+	else if (keycode == ZOOM_IN || keycode == ZOOM_OUT)
+		key_zooming(f, keycode);
+	draw_fractal(f);
+	mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
+	return (0);
+}
+
+void	key_zooming(t_data *f, int keycode)
+{
+	if (keycode == ZOOM_IN)
 	{
 		f->min_r = f->max_r + ZOOM_IN_VAL * (f->min_r - f->max_r);
-		f->max_r = f->max_r + ((f->min_r - f->max_r) - ZOOM_IN_VAL * (f->min_r - f->max_r)) / 2;
+		f->max_r = f->max_r + ((f->min_r - f->max_r) - ZOOM_IN_VAL
+				* (f->min_r - f->max_r)) / 2;
 		f->min_i = f->max_i + ZOOM_IN_VAL * (f->min_i - f->max_i);
-		f->max_i = f->max_i + ((f->min_i - f->max_i) - ZOOM_IN_VAL * (f->min_i - f->max_i)) / 2;
+		f->max_i = f->max_i + ((f->min_i - f->max_i) - ZOOM_IN_VAL
+				* (f->min_i - f->max_i)) / 2;
 	}
 	else if (keycode == ZOOM_OUT)
 	{
 		f->min_r = f->max_r + ZOOM_OUT_VAL * (f->min_r - f->max_r);
-		f->max_r = f->max_r + ((f->min_r - f->max_r) - ZOOM_OUT_VAL * (f->min_r - f->max_r)) / 2;
+		f->max_r = f->max_r + ((f->min_r - f->max_r) - ZOOM_OUT_VAL
+				* (f->min_r - f->max_r)) / 2;
 		f->min_i = f->max_i + ZOOM_OUT_VAL * (f->min_i - f->max_i);
-		f->max_i = f->max_i + ((f->min_i - f->max_i) - ZOOM_OUT_VAL * (f->min_i - f->max_i)) / 2;
+		f->max_i = f->max_i + ((f->min_i - f->max_i) - ZOOM_OUT_VAL
+				* (f->min_i - f->max_i)) / 2;
 	}
-	draw_fractal(f);
-	mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
-	return (0);
 }
 
 void	arrow_controls(t_data *f, int keycode)
