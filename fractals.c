@@ -6,13 +6,13 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/12 23:33:12 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/12 23:39:35 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	draw_fractal(t_data *f, int n)
+void	draw_fractal(t_data *f)
 {
 	double	pr;
 	double	pi;
@@ -27,9 +27,9 @@ void	draw_fractal(t_data *f, int n)
 		{
 			pr = f->min_r + (double)x * (f->max_r - f->min_r) / WIN_WIDTH;
 			pi = f->max_i + (double)y * (f->min_i - f->max_i) / WIN_HEIGHT;
-			if (n == 4)
+			if (f->fractal == 4)
 				julia(f, x, y, pr, pi);
-			else if (n == 5)
+			else if (f->fractal == 5)
 				mandelbrot(f, x, y, pr, pi);
 		}
 	}

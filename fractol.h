@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/12 23:32:56 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/12 23:45:24 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define KEY_PRESS 2
 # define RED_CROSS 17
 # define MOUSE_MOVE 6
+# define MOUSE_DOWN 4
 
 // Keys
 #if __linux__
@@ -86,13 +87,14 @@
 
 typedef struct s_data
 {
-    void    *img;
-    void    *mlx;
-    void    *mlx_win;
-    char    *addr;
-    int     bit_per_pix; //used in my_mlx_pixel_put
-    int     line_len; //used in my_mlx_pixel_put
-    int     endian; //used in mlx_get_data_addrr in main
+	void    *img;
+	void    *mlx;
+	void    *mlx_win;
+	char    *addr;
+	int     bit_per_pix; //used in my_mlx_pixel_put
+	int     line_len; //used in my_mlx_pixel_put
+	int     endian; //used in mlx_get_data_addrr in main
+	int	fractal;
 	double	max_r;
 	double	min_r;
 	double	max_i;
@@ -105,7 +107,7 @@ void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	controls(t_data *f);
 void	mandelbrot(t_data *f, int x, int y, double cr, double ci);
 void	julia(t_data *f, int x, int y, double zr, double zi);
-void	draw_fractal(t_data *f, int n);
+void	draw_fractal(t_data *f);
 int     mouse_down(int button, int x, int y, void *param);
 int     mouse_move(int x, int y, void *param);
 int		arg_handling(int argc, char **argv, t_data *data);

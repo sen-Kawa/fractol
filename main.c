@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/10 21:20:56 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/12 23:38:29 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,15 @@ int	arg_handling(int argc, char **argv, t_data *f)
 	if (argc >= 2)
 	{
 		if ((ft_strncmp(argv[1], "Julia", 6)) == 0)
-			draw_fractal(f, 4);
+		{
+			f->fractal = 4;
+			draw_fractal(f);
+		}	
 		else if ((ft_strncmp(argv[1], "Mandelbrot", 11)) == 0)
-			draw_fractal(f, 5);
+		{
+			f->fractal = 5;
+			draw_fractal(f);
+		}	
 		else if ((ft_strncmp(argv[1], "--help", 7)) == 0)
 		{
 			ft_printf("Fractals available: Julia or Mandelbrot.\n");
