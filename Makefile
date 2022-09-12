@@ -6,13 +6,13 @@
 #    By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 18:56:29 by kaheinz           #+#    #+#              #
-#    Updated: 2022/07/14 16:03:06 by kaheinz          ###   ########.fr        #
+#    Updated: 2022/09/13 00:23:27 by kaheinz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
-SRCS = main.c controls.c fractals.c\
+SRCS = main.c controls.c mouse_controls.c fractals.c\
 
 LIBFT = libft/libft.a
 
