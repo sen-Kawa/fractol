@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/10 21:27:20 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/12 22:55:33 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@
 # define ARROW_DWN 65364
 # define ARROW_LEFT 65361
 # define ARROW_RIGHT 65363
+# define SCROLL_DOWN 4
+# define SCROLL_UP 5
+# define LEFT_CLICK 1
+# define RIGHT_CLICK 3
+# define MIDDLE_CLICK 2
+
 
 #elif __APPLE__
 
@@ -46,13 +52,15 @@
 # define ARROW_UP 126
 # define ARROW_DWN 125
 # define ARROW_LEFT 123
+# define SCROLL_DOWN 5
+# define SCROLL_UP 4
+# define LEFT_CLICK 1
+# define RIGHT_CLICK 2
+# define MIDDLE_CLICK 3
+
 # define ARROW_RIGHT 124
 
 #endif
-
-// Mouse
-# define SCROLL_UP 4
-# define SCROLL_DOWN 5
 
 //Colours
 # define RED 0x00FF0000
@@ -93,12 +101,12 @@ typedef struct s_data
 }   t_data;
 
 void    my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	controls(t_data *data);
+void	controls(t_data *f);
 void	mandelbrot(t_data *f, int x, int y, double cr, double ci);
 void	julia(t_data *f, int x, int y, double zr, double zi);
 void	draw_fractal(t_data *f, int n);
+int     mouse_move(int button, int x, int y, void *param);
 int		arg_handling(int argc, char **argv, t_data *data);
-//int		mouse_hook()
 int		close_win(void *param);
 int		key_press(int keycode, void *param);
 int		print_key(int keycode, t_data *data);
