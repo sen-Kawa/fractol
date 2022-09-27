@@ -6,18 +6,22 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/13 00:46:19 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/27 15:16:06 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int n)
 {
 	char	*dst;
+	int		colour;
 
 	dst = data->addr + (y * data->line_len + x * (data->bit_per_pix / 8));
-	*(unsigned int *)dst = color;
+	colour = colour_trgb(0, 100 * (cos((double)n) + 1),
+			80 * (sin((double)n) + 1),
+			50 * (1 - cos((double)n)));
+	*(unsigned int *)dst = colour;
 }
 
 int	two_args(int argc, char **argv, t_data *f)
@@ -67,21 +71,23 @@ int	print_key(int keycode, t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data	f;
+	t_data	*f;
 
-	f.mlx = mlx_init();
-	f.mlx_win = mlx_new_window(f.mlx, WIN_WIDTH, WIN_HEIGHT, "FractOl!");
-	f.img = mlx_new_image(f.mlx, WIN_WIDTH, WIN_HEIGHT);
-	f.addr = mlx_get_data_addr(f.img, &f.bit_per_pix, &f.line_len, &f.endian);
-	f.min_r = -2.0;
-	f.max_r = 1.0;
-	f.min_i = -1.5;
-	f.max_i = f.min_i + (f.max_r - f.min_r) * WIN_HEIGHT / WIN_WIDTH;
-	f.kr = -0.766667;
-	f.ki = -0.090000;
-	arg_handling(argc, argv, &f);
-	controls(&f);
-	mlx_put_image_to_window(f.mlx, f.mlx_win, f.img, 0, 0);
-	mlx_loop(f.mlx);
+	f = malloc(sizeof(t_data));
+	f->mlx = mlx_init();
+	f->mlx_win = mlx_new_window(f->mlx, WIN_WIDTH, WIN_HEIGHT, "FractOl!");
+	f->img = mlx_new_image(f->mlx, WIN_WIDTH, WIN_HEIGHT);
+	f->addr = mlx_get_data_addr(f->img, &f->bit_per_pix,
+			&f->line_len, &f->endian);
+	f->min_r = -2.0;
+	f->max_r = 1.0;
+	f->min_i = -1.5;
+	f->max_i = f->min_i + (f->max_r - f->min_r) * WIN_HEIGHT / WIN_WIDTH;
+	f->kr = -0.766667;
+	f->ki = -0.090000;
+	arg_handling(argc, argv, f);
+	controls(f);
+	mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
+	mlx_loop(f->mlx);
 	return (0);
 }

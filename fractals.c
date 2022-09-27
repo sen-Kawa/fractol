@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/12 23:39:35 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/27 15:07:13 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,51 +41,35 @@ void	mandelbrot(t_data *f, int x, int y, double cr, double ci)
 	double	zi;
 	double	tmp;
 	int		n;
-	int		is_in_set;
 
 	zr = 0;
 	zi = 0;
 	n = -1;
-	is_in_set = 1;
 	while (++n < MAX_ITER_MANDEL)
 	{
 		if ((zr * zr + zi * zi) > 4.0)
-		{
-			is_in_set = 0;
 			break ;
-		}
 		tmp = 2 * zr * zi + ci;
 		zr = zr * zr - zi * zi + cr;
 		zi = tmp;
 	}
-	if (is_in_set == 1)
-		my_mlx_pixel_put(f, x, y, BLACK);
-	else
-		my_mlx_pixel_put(f, x, y, CORIANDER);
+	my_mlx_pixel_put(f, x, y, n);
 }
 
 void	julia(t_data *f, int x, int y, double zr, double zi)
 {
 	double	tmp;
 	int		n;
-	int		is_in_set;
 
 	n = -1;
-	is_in_set = 1;
 	while (n < MAX_ITER_JULIA)
 	{
 		if ((zr * zr + zi * zi) > 4.0)
-		{
-			is_in_set = 0;
 			break ;
-		}
 		tmp = 2 * zr * zi + f->ki;
 		zr = zr * zr - zi * zi + f->kr;
 		zi = tmp;
 		n++;
 	}
-	if (is_in_set == 1)
-		my_mlx_pixel_put(f, x, y, BLACK);
-	else
-		my_mlx_pixel_put(f, x, y, CORIANDER);
+	my_mlx_pixel_put(f, x, y, n);
 }
