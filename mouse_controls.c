@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/13 00:39:00 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/13 14:40:22 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	mouse_move(int x, int y, void *param)
 	return (0);
 }
 
-void	mouse_down(int button, int x, int y, void *param)
+int	mouse_down(int button, int x, int y, void *param)
 {
 	t_data	*f;
 
@@ -54,4 +54,5 @@ void	mouse_down(int button, int x, int y, void *param)
 	}
 	draw_fractal(f);
 	mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
+	return (0);
 }

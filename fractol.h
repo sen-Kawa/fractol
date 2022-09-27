@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/13 00:43:43 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/13 14:40:38 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 # define LEFT_CLICK 1
 # define RIGHT_CLICK 3
 # define MIDDLE_CLICK 2
+# define PLUS 65451
+# define MINUS 65453
 
 
 #elif __APPLE__
@@ -110,7 +112,7 @@ void	julia(t_data *f, int x, int y, double zr, double zi);
 void	draw_fractal(t_data *f);
 void	arrow_controls(t_data *f, int keycode);
 void	key_zooming(t_data *f, int keycode);
-void	mouse_down(int button, int x, int y, void *param);
+int	mouse_down(int button, int x, int y, void *param);
 int     mouse_move(int x, int y, void *param);
 int		arg_handling(int argc, char **argv, t_data *data);
 int		two_args(int argc, char **argv, t_data *data);
