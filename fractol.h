@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/27 15:26:17 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/27 16:21:24 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@ typedef struct s_data
 	int		line_len;
 	int		endian;
 	int		fractal;
-	int		x;
-	int		y;
 	void	*img;
 	void	*mlx;
 	void	*mlx_win;
