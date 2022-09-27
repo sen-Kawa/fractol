@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/27 15:07:13 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/27 16:41:42 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,24 @@ void	draw_fractal(t_data *f)
 {
 	double	pr;
 	double	pi;
-	int		x;
-	int		y;
 
-	y = -1;
-	while (++y < WIN_HEIGHT)
+	f->y = -1;
+	while (++f->y < WIN_HEIGHT)
 	{
-		x = -1;
-		while (++x < WIN_WIDTH)
+		f->x = -1;
+		while (++f->x < WIN_WIDTH)
 		{
-			pr = f->min_r + (double)x * (f->max_r - f->min_r) / WIN_WIDTH;
-			pi = f->max_i + (double)y * (f->min_i - f->max_i) / WIN_HEIGHT;
+			pr = f->min_r + (double)f->x * (f->max_r - f->min_r) / WIN_WIDTH;
+			pi = f->max_i + (double)f->y * (f->min_i - f->max_i) / WIN_HEIGHT;
 			if (f->fractal == 4)
-				julia(f, x, y, pr, pi);
+				julia(f, pr, pi);
 			else if (f->fractal == 5)
-				mandelbrot(f, x, y, pr, pi);
+				mandelbrot(f, pr, pi);
 		}
 	}
 }
 
-void	mandelbrot(t_data *f, int x, int y, double cr, double ci)
+void	mandelbrot(t_data *f, double cr, double ci)
 {
 	double	zr;
 	double	zi;
@@ -53,10 +51,10 @@ void	mandelbrot(t_data *f, int x, int y, double cr, double ci)
 		zr = zr * zr - zi * zi + cr;
 		zi = tmp;
 	}
-	my_mlx_pixel_put(f, x, y, n);
+	my_mlx_pixel_put(f, n);
 }
 
-void	julia(t_data *f, int x, int y, double zr, double zi)
+void	julia(t_data *f, double zr, double zi)
 {
 	double	tmp;
 	int		n;
@@ -71,5 +69,5 @@ void	julia(t_data *f, int x, int y, double zr, double zi)
 		zi = tmp;
 		n++;
 	}
-	my_mlx_pixel_put(f, x, y, n);
+	my_mlx_pixel_put(f, n);
 }

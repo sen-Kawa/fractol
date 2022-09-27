@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/27 16:21:24 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:03:48 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 #  define LEFT_CLICK 1
 #  define RIGHT_CLICK 3
 #  define MIDDLE_CLICK 2
-#  define PLUS 65451
-#  define MINUS 65453
+#  define PLUS 112
+#  define MINUS 109
 
 # elif __APPLE__
 
@@ -91,6 +91,9 @@ typedef struct s_data
 	int		line_len;
 	int		endian;
 	int		fractal;
+	int		x;
+	int		y;
+	int		r;
 	void	*img;
 	void	*mlx;
 	void	*mlx_win;
@@ -103,10 +106,10 @@ typedef struct s_data
 	double	ki;
 }t_data;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int n);
+void	my_mlx_pixel_put(t_data *data, int n);
 void	controls(t_data *f);
-void	mandelbrot(t_data *f, int x, int y, double cr, double ci);
-void	julia(t_data *f, int x, int y, double zr, double zi);
+void	mandelbrot(t_data *f, double cr, double ci);
+void	julia(t_data *f, double zr, double zi);
 void	draw_fractal(t_data *f);
 void	arrow_controls(t_data *f, int keycode);
 void	key_zooming(t_data *f, int keycode);

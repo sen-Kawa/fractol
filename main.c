@@ -6,19 +6,20 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/27 15:16:06 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:00:52 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int n)
+void	my_mlx_pixel_put(t_data *data, int n)
 {
 	char	*dst;
 	int		colour;
 
-	dst = data->addr + (y * data->line_len + x * (data->bit_per_pix / 8));
-	colour = colour_trgb(0, 100 * (cos((double)n) + 1),
+	dst = data->addr + (data->y * data->line_len + data->x
+			* (data->bit_per_pix / 8));
+	colour = colour_trgb(0, data->r * (cos((double)n) + 1),
 			80 * (sin((double)n) + 1),
 			50 * (1 - cos((double)n)));
 	*(unsigned int *)dst = colour;
@@ -79,6 +80,7 @@ int	main(int argc, char **argv)
 	f->img = mlx_new_image(f->mlx, WIN_WIDTH, WIN_HEIGHT);
 	f->addr = mlx_get_data_addr(f->img, &f->bit_per_pix,
 			&f->line_len, &f->endian);
+	f->r = 100;
 	f->min_r = -2.0;
 	f->max_r = 1.0;
 	f->min_i = -1.5;

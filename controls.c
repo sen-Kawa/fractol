@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/13 18:36:14 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:04:18 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,10 @@ int	key_press(int keycode, void *param)
 	f = (t_data *)param;
 	if (keycode == ESC)
 		exit(EXIT_SUCCESS);
-/*	else if (keycode == PLUS)
-	{
-		if (f->fractal == 4)
-			MAX_ITER_MANDEL = MAX_ITER_MANDEL + 1;
-		else if (f->fractal == 5)
-			MAX_ITER_JULIA++;
-	}*/
+	else if (keycode == PLUS)
+		f->r = f->r + 10;
+	else if (keycode == MINUS)
+		f->r = f->r - 10;
 	else if (keycode == ARROW_RIGHT || keycode == ARROW_LEFT
 		|| keycode == ARROW_DWN || keycode == ARROW_UP)
 		arrow_controls(f, keycode);
