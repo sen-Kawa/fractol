@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:57:35 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/27 17:03:48 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/10/05 18:57:54 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ void	julia(t_data *f, double zr, double zi);
 void	draw_fractal(t_data *f);
 void	arrow_controls(t_data *f, int keycode);
 void	key_zooming(t_data *f, int keycode);
-int		mouse_down(int button, int x, int y, void *param);
+int		mouse_down(int button, int x, int  y, void *param);
+void	scrolling(t_data *f, int button);
 int		mouse_move(int x, int y, void *param);
 int		colour_trgb(int t, int r, int g, int b);
 int		arg_handling(int argc, char **argv, t_data *data);

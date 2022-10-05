@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:42:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/27 16:26:52 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/10/05 18:57:32 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ int	mouse_down(int button, int x, int y, void *param)
 	f = (t_data *)param;
 	(void) x;
 	(void) y;
+	if (button == SCROLL_UP || button == SCROLL_DOWN)
+		scrolling(f, button);
+	return (0);
+}
+
+void	scrolling(t_data *f, int button)
+{
 	if (button == SCROLL_UP)
 	{
 		f->min_r = f->max_r + ZOOM_IN_VAL * (f->min_r - f->max_r);
@@ -54,5 +61,4 @@ int	mouse_down(int button, int x, int y, void *param)
 	}
 	draw_fractal(f);
 	mlx_put_image_to_window(f->mlx, f->mlx_win, f->img, 0, 0);
-	return (0);
 }
