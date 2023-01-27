@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:36:48 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/09/27 17:00:52 by kaheinz          ###   ########.fr       */
+/*   Updated: 2023/01/27 22:33:52 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	arg_handling(int argc, char **argv, t_data *f)
 int	print_key(int keycode, t_data *data)
 {
 	(void)data;
-	ft_printf("This is the keycode:%i", keycode);
+	(void)keycode;
+//	ft_printf("This is the keycode:%i", keycode);
 	return (0);
 }
 
