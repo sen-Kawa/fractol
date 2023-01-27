@@ -39,3 +39,8 @@
 
 ### Program's OS Compatibility:
 - Linux
+
+---
+`./fractol Mandelbrot`
+![image](https://user-images.githubusercontent.com/71138634/215203376-76a63d84-ad9c-48b2-83cc-701b00c4e199.png)
+
