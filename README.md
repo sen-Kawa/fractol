@@ -32,7 +32,7 @@
 ### Submodules:
 - Libft
 > Before cloning repository:
-- `git clone --recurse-submodules https://github.com/sen-Kawa/Fractol`
+- `git clone --recurse-submodules https://github.com/sen-Kawa/fractol.git`
 > After cloning repository and not having used `--recurse-submodules`:
 - `git submodule init`
 - `git submodule update`
