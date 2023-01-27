@@ -29,5 +29,13 @@
 ### To compile miniLibx:
 - https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html#installation
 
+### Submodules:
+- Libft
+> Before cloning repository:
+- `git clone --recurse-submodules https://github.com/sen-Kawa/Fractol`
+> After cloning repository and not having used `--recurse-submodules`:
+- `git submodule init`
+- `git submodule update`
+
 ### Program's OS Compatibility:
 - Linux
