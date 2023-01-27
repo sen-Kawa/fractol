@@ -21,7 +21,7 @@
 - `Arrow down`: move view down
 - `Scroll in`: zoom in
 - `Scroll out`: zoom out
-- `Mouse move`: only available for Julia set, re-renders imagine with different parameters. (on low iterations for saving resources, iterations can be increased in header file)
+- `Mouse move`: only available for Julia set, re-renders image with different parameters. (on low iterations for saving resources, iterations can be increased in header file)
 
 ### Graphics library used:
 - miniLibx (https://github.com/42Paris/minilibx-linux)
